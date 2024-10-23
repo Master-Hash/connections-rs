@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  # workflow_dispatch:
+  push:
+    tags:
+      - "*"
+      - "**"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supplypike/setup-bin@v4
+        with:
+          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_119/binaryen-version_119-x86_64-linux.tar.gz"
+          name: "wasm-opt"
+          version: "119"
+
+      - uses: supplypike/setup-bin@v4
+        with:
+          uri: "https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.95/wasm-bindgen-0.2.95-aarch64-unknown-linux-gnu.tar.gz"
+          name: "wasm-bindgen"
+          version: "0.2.95"
+
+      - name: Build
+        run: |-
+          cargo build --bins --release --verbose --target wasm32-unknown-unknown
+          && wasm-bindgen ./target/wasm32-unknown-unknown/release/connections_rs.wasm --out-dir ./pkg --typescript --target web
+          && wasm-opt ./pkg/connections_rs_bg.wasm -o ./pkg/connections_rs_bg.wasm -Oz
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pkg
+          path: pkg/
+          compression-level: 9
