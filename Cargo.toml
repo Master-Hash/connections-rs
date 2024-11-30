@@ -14,31 +14,31 @@ edition = "2021"
 default = ["console_error_panic_hook"]
 
 [dependencies]
-wasm-bindgen = "0.2.95"
+wasm-bindgen = "0.2.97"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
 # all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
 # code size when deploying.
 console_error_panic_hook = { version = "0.1.7", optional = true }
-bevy = { version = "0.14.2", default-features = false, features = [
+# https://bevy-cheatbook.github.io/setup/bevy-config.html
+# https://docs.rs/crate/bevy/0.15.0/features
+bevy = { version = "0.15.0", default-features = false, features = [
     "animation",
     "bevy_asset",
     "bevy_state",
     "bevy_color",
     "bevy_gilrs",
     "bevy_scene",
+    "bevy_window",
     "bevy_winit",
     "bevy_core_pipeline",
-    "bevy_pbr",
-    "bevy_gltf",
     "bevy_render",
     "bevy_sprite",
     "bevy_text",
     "bevy_ui",
     "multi_threaded",
     "png",
-    "hdr",
     "bevy_gizmos",
     "tonemapping_luts",
     "smaa_luts",
@@ -56,6 +56,8 @@ opt-level = 3
 
 [profile.release]
 # Tell `rustc` to optimize for small code size.
+strip = true
+codegen-units = 1
 opt-level = "s"
 lto = "thin"
 
