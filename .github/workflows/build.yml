@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - uses: actions/checkout@v4
@@ -31,10 +31,10 @@ jobs:
 
       - uses: supplypike/setup-bin@v4
         with:
-          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_120_b/binaryen-version_120_b-x86_64-linux.tar.gz"
+          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_121/binaryen-version_121-aarch64-linux.tar.gz"
           name: "wasm-opt"
-          version: "120_b"
-          subPath: "binaryen-version_120_b/bin"
+          version: "121"
+          subPath: "binaryen-version_121/bin"
 
       # - name: Test downloading Giant Swarm binary
       #   uses: giantswarm/install-binary-action@v3
