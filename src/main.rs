@@ -1,7 +1,6 @@
 //! This example illustrates how to resize windows, and how to respond to a window being resized.
 mod utils;
 use bevy::{prelude::*, window::WindowResized};
-use wasm_bindgen::prelude::*;
 // use web_sys::console;
 
 fn main() {

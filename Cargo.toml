@@ -2,7 +2,7 @@
 name = "connections-rs"
 version = "0.1.0"
 authors = ["Master-Hash <hash@hash.memorial>"]
-edition = "2021"
+edition = "2024"
 
 # [rust]
 # lld = true
