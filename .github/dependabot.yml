@@ -1,7 +1,22 @@
 version: 2
 updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
   - package-ecosystem: cargo
     directory: "/"
+    groups:
+      minor:
+        update-types:
+          - minor
+          - patch
+        exclude-patterns:
+          - "bevy"
+          - "bevy*"
+      major:
+        update-types:
+          - major
     allow:
       - dependency-type: all
     schedule:
