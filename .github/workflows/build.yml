@@ -32,10 +32,10 @@ jobs:
 
       - uses: supplypike/setup-bin@v4
         with:
-          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_122/binaryen-version_122-aarch64-linux.tar.gz"
+          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_123/binaryen-version_123-aarch64-linux.tar.gz"
           name: "wasm-opt"
-          version: "122"
-          subPath: "binaryen-version_122/bin"
+          version: "123"
+          subPath: "binaryen-version_123/bin"
 
       # - name: Test downloading Giant Swarm binary
       #   uses: giantswarm/install-binary-action@v3
@@ -52,7 +52,6 @@ jobs:
 
       - name: Show version information (Rust, cargo)
         run: |
-          rustup update
           rustup -V
           rustup toolchain list
           rustup target add wasm32-unknown-unknown
