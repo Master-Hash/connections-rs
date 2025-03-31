@@ -23,7 +23,7 @@ wasm-bindgen = "0.2.100"
 console_error_panic_hook = { version = "0.1.7", optional = true }
 # https://bevy-cheatbook.github.io/setup/bevy-config.html
 # https://docs.rs/crate/bevy/0.15.0/features
-bevy = { version = "0.16.0-rc.2", default-features = false, features = [
+bevy = { version = "0.16.0-rc.3", default-features = false, features = [
     "async_executor",
     "bevy_gilrs",
     "bevy_window",
