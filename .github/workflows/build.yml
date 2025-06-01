@@ -57,12 +57,13 @@ jobs:
           rustup target add wasm32-unknown-unknown
           cargo -V
           rustc -V
+          rustup update stable
 
       - name: Build
         run: |-
           cargo build --bins --release --verbose --target wasm32-unknown-unknown
           wasm-bindgen ./target/wasm32-unknown-unknown/release/connections-rs.wasm --out-dir ./pkg --typescript --target web
-          wasm-opt ./pkg/connections-rs_bg.wasm -o ./pkg/connections-rs_bg.wasm -Oz --enable-simd
+          wasm-opt ./pkg/connections-rs_bg.wasm -o ./pkg/connections-rs_bg.wasm -Oz --enable-simd --enable-bulk-memory --enable-nontrapping-float-to-int
 
       - uses: actions/upload-artifact@v4
         with:
