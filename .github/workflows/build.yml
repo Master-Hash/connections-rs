@@ -32,10 +32,10 @@ jobs:
 
       - uses: supplypike/setup-bin@v4
         with:
-          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_123/binaryen-version_123-aarch64-linux.tar.gz"
+          uri: "https://github.com/WebAssembly/binaryen/releases/download/version_124/binaryen-version_124-aarch64-linux.tar.gz"
           name: "wasm-opt"
-          version: "123"
-          subPath: "binaryen-version_123/bin"
+          version: "124"
+          subPath: "binaryen-version_124/bin"
 
       # - name: Test downloading Giant Swarm binary
       #   uses: giantswarm/install-binary-action@v3
@@ -48,7 +48,7 @@ jobs:
 
       - uses: taiki-e/install-action@v2
         with:
-          tool: wasm-bindgen@0.2.100
+          tool: wasm-bindgen@0.2.102
 
       - name: Show version information (Rust, cargo)
         run: |
